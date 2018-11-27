@@ -23,4 +23,12 @@ const initializeGrid = function(grid, positions) {
   return grid;
 };
 
-module.exports = { createArray, createGrid, initializeGrid };
+const displayGrid = function(grid) {
+  let result = grid.map(function(x) { return x.join(" ") } );
+  return result.join("\n");
+}
+
+module.exports = { 
+  createArray, createGrid,
+  initializeGrid, displayGrid
+};

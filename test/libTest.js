@@ -2,7 +2,8 @@ const assert = require("assert");
 
 const { createArray, 
   createGrid,
-  initializeGrid } = require("../src/library.js");
+  initializeGrid,
+  displayGrid } = require("../src/library.js");
 
 describe("Create Array ",function() {
 
@@ -56,6 +57,24 @@ describe("InsertElement", function() {
     let inputGrid = [ ["D","D","D"] , ["D","D","D"] , ["D","D","D"] ];
     let expectedGrid = [["A","D","A"],["A","D","D"],["A","D","D"]];
     assert.deepEqual(initializeGrid(inputGrid, [1,3,4,7]), expectedGrid);
+  });
+
+});
+
+describe("Display Grid", function() {
+
+  it("Should return formatted string of given grid of size 2", function() {
+    let inputGrid = [["A","D"],["D","D"]];
+    let expectedGrid = "A D\nD D"
+
+    assert.deepEqual(displayGrid(inputGrid), expectedGrid);
+  });
+
+  it("Should return formatted string of given grid of size 3", function() {
+    let inputGrid = [["A","D","A"],["A","D","D"],["A","D","D"]];
+    let expectedGrid = "A D A\nA D D\nA D D"
+
+    assert.deepEqual(displayGrid(inputGrid), expectedGrid);
   });
 
 });
