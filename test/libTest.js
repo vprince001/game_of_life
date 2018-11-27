@@ -38,18 +38,24 @@ describe("Create Grid ",function() {
 
 describe("InsertElement", function() {
 
- it("Should insert 'A' at position 1 in given grid", function() {
-   let inputGrid = [ ["D","D","D"] , ["D","D","D"] , ["D","D","D"] ];
-   let expectedGrid = [["A","D","D"],["D","D","D"],["D","D","D"]];
+  it("Should insert 'A' at position 1 in given grid", function() {
+    let inputGrid = [ ["D","D","D"] , ["D","D","D"] , ["D","D","D"] ];
+    let expectedGrid = [["A","D","D"],["D","D","D"],["D","D","D"]];
 
-   assert.deepEqual(initializeGrid(inputGrid, [1]), expectedGrid);
- });
+    assert.deepEqual(initializeGrid(inputGrid, [1]), expectedGrid);
+  });
 
- it("Should insert 'A' at position 1,5,7 in given grid", function() {
-   let inputGrid = [ ["D","D","D"] , ["D","D","D"] , ["D","D","D"] ];
-   let expectedGrid = [["A","D","D"],["D","A","D"],["A","D","D"]];
+  it("Should insert 'A' at position 1,5,7 in given grid", function() {
+    let inputGrid = [ ["D","D","D"] , ["D","D","D"] , ["D","D","D"] ];
+    let expectedGrid = [["A","D","D"],["D","A","D"],["A","D","D"]];
 
-   assert.deepEqual(initializeGrid(inputGrid, [1,5,7]), expectedGrid);
- });
+    assert.deepEqual(initializeGrid(inputGrid, [1,5,7]), expectedGrid);
+  });
+
+  it("Should insert 'A' at position 1,3,4,7 in given grid", function() {
+    let inputGrid = [ ["D","D","D"] , ["D","D","D"] , ["D","D","D"] ];
+    let expectedGrid = [["A","D","A"],["A","D","D"],["A","D","D"]];
+    assert.deepEqual(initializeGrid(inputGrid, [1,3,4,7]), expectedGrid);
+  });
 
 });

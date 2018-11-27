@@ -11,8 +11,9 @@ const createGrid = function(size) {
 };
 
 const initializeGrid = function(grid, positions) {
+  let length = grid.length;
+  let row,column;
 
-  let length = positions.length;
   for(position of positions) {
     position--;
     row = Math.floor(position / length);
