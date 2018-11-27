@@ -4,7 +4,7 @@ const createArray = function(size) {
 
 const createGrid = function(size) {
   let grid = [];
-  for(let i = 0; i < size; i++) {
+  for(let currentSize = 0; currentSize < size; currentSize++) {
     grid.push(createArray(size));
   }
   return grid;
