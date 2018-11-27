@@ -8,6 +8,18 @@ const createGrid = function(size) {
     grid.push(createArray(size));
   }
   return grid;
-}
+};
 
-module.exports = { createArray, createGrid };
+const initializeGrid = function(grid, positions) {
+
+  let length = positions.length;
+  for(position of positions) {
+    position--;
+    row = Math.floor(position / length);
+    column = position % length;
+    grid[row][column] = "A";
+  }
+  return grid;
+};
+
+module.exports = { createArray, createGrid, initializeGrid };
