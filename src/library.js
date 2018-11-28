@@ -39,17 +39,38 @@ const getCoordinates = function (position,size) {
   return coordinates;
 };
 
-zipArray = function(columnCoordinates) {
+const zipArray = function(columnCoordinates) {
   return function(zippedArray, element) {
     for(let index = 0; index < columnCoordinates.length; index++) {
       zippedArray.push([element, columnCoordinates[index]]);
     }
     return zippedArray; 
   }
-}
+};
+
+const getValidNeighbours = function(cell, neighbourCandidates, grid) { 
+  let removeGivenCell = remove(cell);
+  let allNeighbours = neighbourCandidates.filter(removeGivenCell);
+  let isValidNeighbour = validateNeighbours(grid.length);
+  return allNeighbours.filter(isValidNeighbour);
+};
+
+const remove = function(cell) { 
+ return function (element) { 
+   return !( element[0] == cell[0] && element[1] == cell[1] )
+ };
+};
+
+const validateNeighbours = function(size) { 
+ return function (element) { 
+   return ! ( element.some( (element => element<0 || element > size-1) ) )
+ };
+};
 
 module.exports = { 
   createArray, createGrid,
   initializeGrid, displayGrid,
-  getCoordinates,zipArray
+  getCoordinates,zipArray,
+  remove,validateNeighbours,
+  getValidNeighbours
 };

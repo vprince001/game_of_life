@@ -5,6 +5,10 @@ const { createArray,
   initializeGrid,
   getCoordinates,
   zipArray,
+  getValidNeighbours,
+  getNeighbours,
+  remove,
+  validateNeighbours,
   displayGrid } = require("../src/library.js");
 
 describe("createArray ",function() {
@@ -111,3 +115,59 @@ describe("zipArray",function() {
   });
 
 });
+
+describe("validateNeighbours",function() {
+
+  it("should return true for size 0",function() {
+    isValidNeighbour = validateNeighbours(5);
+    assert.equal(isValidNeighbour([0,0]),true)
+  });
+
+  it("should return true for size => 0",function() {
+    isValidNeighbour = validateNeighbours(3);
+    assert.equal(isValidNeighbour([2,1]),true)
+  });
+
+  it("should return false for size > size-1",function() {
+    isValidNeighbour = validateNeighbours(3);
+    assert.equal(isValidNeighbour([3,2]),false)
+  });
+
+  it("should return false for size < 0",function() {
+    isValidNeighbour = validateNeighbours(3);
+    assert.equal(isValidNeighbour([-1,2]),false)
+  });
+
+});
+
+describe("remove",function() {
+
+  it("should return false for same cell and element",function() {
+    cellToRemove = remove([0,1]);
+    assert.equal(cellToRemove([0,1]),false);
+  });
+
+  it("should return true for different cell and element",function() {
+    cellToRemove = remove([1,1]);
+    assert.equal(cellToRemove([0,1]),true);
+  });
+
+});
+
+describe("getValidNeighbours",function() {
+  let grid = [["D","D","D"],["D","D","D"],["D","D","D"]]
+
+  it("should return empty array for no neighbours",function() {
+    assert.deepEqual(getValidNeighbours([0,1],[],grid),[]);
+  });
+
+  it("should return array of non zero array element ",function() {
+    assert.deepEqual(getValidNeighbours([0,1],[[1,1],[1,2],[-1,1],[2,2]],grid),[[1,1],[1,2],[2,2]]);
+  });
+
+  it("should return array of elements < gridSize ",function() {
+    assert.deepEqual(getValidNeighbours([0,1],[[1,1],[1,3],[-1,1],[2,4]],grid),[[1,1]]);
+  });
+
+});
+
