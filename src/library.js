@@ -11,13 +11,14 @@ const createGrid = function(size) {
 };
 
 const initializeGrid = function(grid, positions) {
-  let length = grid.length;
+  let size = grid.length;
   let row,column;
 
   for(position of positions) {
     position--;
-    row = Math.floor(position / length);
-    column = position % length;
+    coordinates = getCoordinates(position, size);
+    row = coordinates[0];
+    column = coordinates[1];
     grid[row][column] = "A";
   }
   return grid;
@@ -28,7 +29,19 @@ const displayGrid = function(grid) {
   return result.join("\n");
 }
 
+const getCoordinates = function (position,size) {
+  let coordinates = [];
+  if(size < 3) {
+    return coordinates;
+  }
+  coordinates.push( Math.floor(position / size) );
+  coordinates.push( (position % size) );
+  return coordinates;
+}
+
+
 module.exports = { 
   createArray, createGrid,
-  initializeGrid, displayGrid
+  initializeGrid, displayGrid,
+  getCoordinates
 };

@@ -3,9 +3,10 @@ const assert = require("assert");
 const { createArray, 
   createGrid,
   initializeGrid,
+  getCoordinates,
   displayGrid } = require("../src/library.js");
 
-describe("Create Array ",function() {
+describe("createArray ",function() {
 
   it("Should return empty array for 0",function() {
     assert.deepEqual(createArray(0), []);
@@ -21,7 +22,7 @@ describe("Create Array ",function() {
 
 });
 
-describe("Create Grid ",function() {
+describe("createGrid ",function() {
 
   it("Should return empty array for 0",function() {
     assert.deepEqual(createGrid(0),[]);
@@ -37,7 +38,7 @@ describe("Create Grid ",function() {
 
 });
 
-describe("InsertElement", function() {
+describe("insertElement", function() {
 
   it("Should insert 'A' at position 1 in given grid", function() {
     let inputGrid = [ ["D","D","D"] , ["D","D","D"] , ["D","D","D"] ];
@@ -61,7 +62,7 @@ describe("InsertElement", function() {
 
 });
 
-describe("Display Grid", function() {
+describe("displayGrid", function() {
 
   it("Should return formatted string of given grid of size 2", function() {
     let inputGrid = [["A","D"],["D","D"]];
@@ -75,6 +76,18 @@ describe("Display Grid", function() {
     let expectedGrid = "A D A\nA D D\nA D D"
 
     assert.deepEqual(displayGrid(inputGrid), expectedGrid);
+  });
+
+});
+
+describe("Get Coordinates",function() {
+
+  it("should return undefined when size is 0",function() {
+    assert.deepEqual(getCoordinates(4,0),[]);
+  });
+
+  it("should return array of length 2 when position is provided",function() {
+    assert.deepEqual(getCoordinates(5,5),[1,0]);
   });
 
 });
