@@ -1,5 +1,5 @@
 const createArray = function(size) {
-  return new Array(size).fill("D");
+  return new Array(size).fill(0);
 };
 
 const createGrid = function(size) {
@@ -19,7 +19,7 @@ const initializeGrid = function(grid, positions) {
     coordinates = getCoordinates(position, size);
     row = coordinates[0];
     column = coordinates[1];
-    grid[row][column] = "A";
+    grid[row][column] = 1;
   }
   return grid;
 };
