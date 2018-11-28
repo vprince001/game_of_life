@@ -4,6 +4,7 @@ const { createArray,
   createGrid,
   initializeGrid,
   getCoordinates,
+  zipArray,
   displayGrid } = require("../src/library.js");
 
 describe("createArray ",function() {
@@ -88,6 +89,25 @@ describe("Get Coordinates",function() {
 
   it("should return array of length 2 when position is provided",function() {
     assert.deepEqual(getCoordinates(5,5),[1,0]);
+  });
+
+});
+
+describe("zipArray",function() {
+
+  it("should zip array elements with given element",function() {
+    zip = zipArray([1,2,3,4]);
+    assert.deepEqual(zip([],3),[[3,1],[3,2],[3,3],[3,4]]);
+  });
+
+  it("should return empty array for empty array ",function() { 
+    zip = zipArray([]);
+    assert.deepEqual(zip([],3),[]);
+  });
+
+  it("should return zip array of one element",function() { 
+    zip = zipArray([3]);
+    assert.deepEqual(zip([],3), [ [3,3] ]);
   });
 
 });

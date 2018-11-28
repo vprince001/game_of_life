@@ -27,7 +27,7 @@ const initializeGrid = function(grid, positions) {
 const displayGrid = function(grid) {
   let result = grid.map(function(x) { return x.join(" ") } );
   return result.join("\n");
-}
+};
 
 const getCoordinates = function (position,size) {
   let coordinates = [];
@@ -37,11 +37,19 @@ const getCoordinates = function (position,size) {
   coordinates.push( Math.floor(position / size) );
   coordinates.push( (position % size) );
   return coordinates;
-}
+};
 
+zipArray = function(columnCoordinates) {
+  return function(zippedArray, element) {
+    for(let index = 0; index < columnCoordinates.length; index++) {
+      zippedArray.push([element, columnCoordinates[index]]);
+    }
+    return zippedArray; 
+  }
+}
 
 module.exports = { 
   createArray, createGrid,
   initializeGrid, displayGrid,
-  getCoordinates
+  getCoordinates,zipArray
 };
