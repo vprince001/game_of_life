@@ -171,3 +171,12 @@ describe("getValidNeighbours",function() {
 
 });
 
+describe("getNeighbours",function() {
+  let grid = [["D","D","D"],["D","D","D"],["D","D","D"]]
+
+  it("should return array of neighbour of given cell",function() {
+    assert.deepEqual(getNeighbours([0,0],grid),[[0,1],[1,0],[1,1]]);
+    assert.deepEqual(getNeighbours([0,1],grid),[[0,0],[0,2],[1,0],[1,1],[1,2]]);
+  });
+});
+

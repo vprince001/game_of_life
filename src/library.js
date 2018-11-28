@@ -67,10 +67,19 @@ const validateNeighbours = function(size) {
  };
 };
 
+const getNeighbours = function(cellCoordinates, grid) {
+  let rowCoordinates = [ cellCoordinates[0]-1, cellCoordinates[0], cellCoordinates[0]+1 ];
+  let columnCoordinates = [ cellCoordinates[1]-1, cellCoordinates[1], cellCoordinates[1]+1 ];
+  let zip = zipArray(columnCoordinates);
+  let neighbourCandidates = rowCoordinates.reduce(zip,[]);
+  let neighbours = getValidNeighbours(cellCoordinates, neighbourCandidates, grid);
+  return neighbours;
+}
+
 module.exports = { 
   createArray, createGrid,
   initializeGrid, displayGrid,
   getCoordinates,zipArray,
   remove,validateNeighbours,
-  getValidNeighbours
+  getValidNeighbours,getNeighbours
 };
